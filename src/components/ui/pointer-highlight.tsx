@@ -1,0 +1,124 @@
+"use client";
+
+import * as React from "react";
+import { motion } from "motion/react";
+
+import { cn } from "@/lib/utils";
+
+export interface PointerHighlightProps {
+  children: React.ReactNode;
+  rectangleClassName?: string;
+  pointerClassName?: string;
+  containerClassName?: string;
+}
+
+export function PointerHighlight({
+  children,
+  rectangleClassName,
+  pointerClassName,
+  containerClassName
+}: PointerHighlightProps) {
+  const containerRef = React.useRef<HTMLSpanElement>(null);
+  const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
+
+  React.useEffect(() => {
+    const element = containerRef.current;
+
+    if (element) {
+      const { width, height } = element.getBoundingClientRect();
+      setDimensions({ width, height });
+    }
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        setDimensions({ width, height });
+      }
+    });
+
+    if (element) {
+      resizeObserver.observe(element);
+    }
+
+    return () => {
+      if (element) {
+        resizeObserver.unobserve(element);
+      }
+    };
+  }, []);
+
+  return (
+    <span
+      className={cn("relative inline-block w-fit", containerClassName)}
+      ref={containerRef}
+    >
+      {children}
+      {dimensions.width > 0 && dimensions.height > 0 && (
+        <>
+          <motion.span
+            className="pointer-events-none absolute inset-0 z-0"
+            initial={{ opacity: 0, scale: 0.95, originX: 0, originY: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <motion.span
+              className={cn(
+                "absolute inset-0 border border-neutral-800 dark:border-neutral-200",
+                rectangleClassName
+              )}
+              initial={{
+                width: 0,
+                height: 0,
+              }}
+              whileInView={{
+                width: dimensions.width,
+                height: dimensions.height,
+              }}
+              transition={{
+                duration: 1,
+                ease: "easeInOut",
+              }}
+            />
+          </motion.span>
+          <motion.span
+            className="pointer-events-none absolute left-0 top-0 z-20"
+            initial={{ opacity: 0 }}
+            whileInView={{
+              opacity: 1,
+              x: dimensions.width - 2,
+              y: dimensions.height - 2,
+            }}
+            transition={{
+              opacity: { duration: 0.1, ease: "easeInOut" },
+              duration: 1,
+              ease: "easeInOut",
+            }}
+          >
+            <Pointer
+              className={cn("h-5 w-5 text-foreground", pointerClassName)}
+            />
+          </motion.span>
+        </>
+      )}
+    </span>
+  );
+}
+
+const Pointer = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      strokeWidth="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      viewBox="0 0 16 16"
+      height="1em"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"></path>
+    </svg>
+  );
+};
