@@ -147,7 +147,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "Node.js", "Prisma", "PostgreSQL", "Gemini", "Inngest"],
     accent: "signal",
     image: {
-      src: "/sensai-banner.jpeg",
+      src: "/projects/sensai-banner.jpeg",
       alt: "SENSAI career platform homepage preview"
     },
     links: [
