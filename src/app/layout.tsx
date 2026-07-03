@@ -6,26 +6,115 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import "./globals.css";
 
+const siteUrl = "https://adityachaudhari.tech";
+const description =
+  "Aditya Chaudhari is a full-stack software engineer in Pune, India, building AI agents, RAG systems, React and Next.js web apps, and React Native mobile apps with FastAPI, Node.js, LangChain, and LangGraph.";
+
 export const metadata: Metadata = {
-  title: "Aditya Chaudhari - Full-Stack Software Engineer",
-  description:
-    "Portfolio of Aditya Chaudhari, a full-stack software engineer building React, Next.js, React Native, FastAPI, Node.js, and LLM-powered AI systems.",
-  metadataBase: new URL("https://aditya-chaudhari.dev"),
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Aditya Chaudhari — Full-Stack Software Engineer",
+    template: "%s — Aditya Chaudhari"
+  },
+  description,
+  keywords: [
+    "Aditya Chaudhari",
+    "Full-Stack Software Engineer",
+    "AI Engineer",
+    "Software Engineer Pune",
+    "React",
+    "Next.js",
+    "React Native",
+    "FastAPI",
+    "Node.js",
+    "TypeScript",
+    "Python",
+    "LangChain",
+    "LangGraph",
+    "RAG",
+    "LLM",
+    "AI Agents",
+    "Portfolio"
+  ],
+  authors: [{ name: "Aditya Chaudhari", url: siteUrl }],
+  creator: "Aditya Chaudhari",
+  publisher: "Aditya Chaudhari",
+  category: "technology",
+  alternates: { canonical: "/" },
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }],
     shortcut: "/favicon.ico",
     apple: { url: "/favicon.png", sizes: "512x512" }
   },
   openGraph: {
-    title: "Aditya Chaudhari - Full-Stack Software Engineer",
-    description: "AI agents, React Native chat SDKs, RAG systems, and production web applications.",
-    type: "website"
+    type: "website",
+    url: siteUrl,
+    siteName: "Aditya Chaudhari",
+    title: "Aditya Chaudhari — Full-Stack Software Engineer",
+    description,
+    locale: "en_US"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aditya Chaudhari - Full-Stack Software Engineer",
-    description: "AI agents, React Native chat SDKs, RAG systems, and production web applications."
+    site: "@AdityaXCodess",
+    creator: "@AdityaXCodess",
+    title: "Aditya Chaudhari — Full-Stack Software Engineer",
+    description
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    }
   }
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Aditya Chaudhari",
+  url: siteUrl,
+  image: `${siteUrl}/favicon.png`,
+  jobTitle: "Full-Stack Software Engineer",
+  email: "mailto:AdityaChaudhari9022@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Pune",
+    addressRegion: "Maharashtra",
+    addressCountry: "India"
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "DY Patil International University"
+  },
+  worksFor: {
+    "@type": "Organization",
+    name: "Fynd (Shopsense Retail Technologies)"
+  },
+  sameAs: [
+    "https://www.linkedin.com/in/aditya-chaudhari-ai/",
+    "https://github.com/AdityaChaudhari901",
+    "https://x.com/AdityaXCodess"
+  ],
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "React Native",
+    "FastAPI",
+    "Node.js",
+    "TypeScript",
+    "Python",
+    "LangChain",
+    "LangGraph",
+    "RAG",
+    "Large Language Models",
+    "AI Agents"
+  ]
 };
 
 export const viewport: Viewport = {
@@ -45,6 +134,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
           <ClickSpark />

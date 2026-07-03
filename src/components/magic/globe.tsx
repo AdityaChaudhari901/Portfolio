@@ -27,13 +27,30 @@ const GLOBE_CONFIG: COBEOptions = {
   glowColor: [1, 1, 1],
   markers: [
     { location: [18.5204, 73.8567], size: 0.06 }, // Pune, India (home)
-    { location: [19.076, 72.8777], size: 0.03 }, // Mumbai
+    { location: [19.076, 72.8777], size: 0.04 }, // Mumbai
+    { location: [28.6139, 77.209], size: 0.03 }, // Delhi
+    { location: [12.9716, 77.5946], size: 0.03 }, // Bengaluru
+    { location: [13.0827, 80.2707], size: 0.03 }, // Chennai
+    { location: [17.385, 78.4867], size: 0.03 }, // Hyderabad
     { location: [40.7128, -74.006], size: 0.03 }, // New York
-    { location: [51.5074, -0.1278], size: 0.03 }, // London
     { location: [37.7749, -122.4194], size: 0.03 }, // San Francisco
+    { location: [34.0522, -118.2437], size: 0.03 }, // Los Angeles
+    { location: [41.8781, -87.6298], size: 0.03 }, // Chicago
+    { location: [43.6532, -79.3832], size: 0.03 }, // Toronto
+    { location: [51.5074, -0.1278], size: 0.03 }, // London
+    { location: [48.8566, 2.3522], size: 0.03 }, // Paris
+    { location: [52.52, 13.405], size: 0.03 }, // Berlin
+    { location: [52.3676, 4.9041], size: 0.03 }, // Amsterdam
+    { location: [55.7558, 37.6173], size: 0.03 }, // Moscow
+    { location: [25.2048, 55.2708], size: 0.03 }, // Dubai
     { location: [1.3521, 103.8198], size: 0.03 }, // Singapore
+    { location: [3.139, 101.6869], size: 0.03 }, // Kuala Lumpur
     { location: [35.6762, 139.6503], size: 0.03 }, // Tokyo
-    { location: [25.2048, 55.2708], size: 0.03 } // Dubai
+    { location: [37.5665, 126.978], size: 0.03 }, // Seoul
+    { location: [22.3193, 114.1694], size: 0.03 }, // Hong Kong
+    { location: [-33.8688, 151.2093], size: 0.03 }, // Sydney
+    { location: [-23.5505, -46.6333], size: 0.03 }, // São Paulo
+    { location: [-1.2921, 36.8219], size: 0.03 } // Nairobi
   ]
 };
 

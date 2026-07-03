@@ -1,12 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { ArrowUpRight, Download, MapPin, Sparkles } from "lucide-react";
+import { ArrowUpRight, Cake, Download, MapPin, Sparkles } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Globe } from "@/components/magic/globe";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import {
   certifications,
@@ -20,22 +20,16 @@ import {
 import type { ContributionData } from "@/lib/github";
 
 import { ClickHint } from "./click-hint";
+import { ExpandableProjects } from "./expandable-projects";
 import { ExperienceCard } from "./experience-card";
 import { FloatingDock } from "./floating-dock";
 import { GitHubActivity } from "./github-activity";
-import { ProjectVisual } from "./project-visual";
 
 interface RevealProps {
   id?: string;
   className?: string;
   children: React.ReactNode;
 }
-
-const badgeVariantByAccent = {
-  signal: "signal",
-  ember: "ember",
-  coral: "coral"
-} as const;
 
 function Reveal({ id, className, children }: RevealProps) {
   return (
@@ -57,7 +51,7 @@ export function PortfolioHome({ contributions }: { contributions: ContributionDa
       <div className="grain" />
       <FloatingDock />
 
-      <main className="mx-auto flex min-h-screen w-full flex-col px-4 pb-28 pt-16 sm:max-w-4xl sm:px-6 sm:pt-24">
+      <main className="mx-auto flex min-h-screen w-full flex-col px-4 pb-44 pt-16 sm:max-w-4xl sm:px-6 sm:pt-24">
         <section id="home" className="scroll-mt-24">
           <div className="flex items-start justify-between gap-6">
             <div className="min-w-0 flex-1">
@@ -102,6 +96,10 @@ export function PortfolioHome({ contributions }: { contributions: ContributionDa
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+            <span className="inline-flex items-center gap-2">
+              <Cake className="size-4" />
+              22
+            </span>
             <span className="inline-flex items-center gap-2">
               <MapPin className="size-4" />
               {profile.location}
@@ -150,12 +148,28 @@ export function PortfolioHome({ contributions }: { contributions: ContributionDa
 
         <Reveal id="skills" className="scroll-mt-24 pt-12">
           <SectionTitle>Skills</SectionTitle>
-          <div className="flex flex-wrap gap-2">
-            {skillGroups.flatMap((group) => group.skills).map((skill, index) => (
-              <Badge key={`${skill}-${index}`} variant="secondary">
-                {skill}
-              </Badge>
-            ))}
+          <div className="columns-1 gap-4 sm:columns-2">
+            {skillGroups.map((group) => {
+              const Icon = group.icon;
+
+              return (
+                <div key={group.title} className="mb-4 break-inside-avoid rounded-xl border bg-card/75 p-4">
+                  <div className="mb-3 flex items-center gap-3">
+                    <div className="flex size-9 shrink-0 items-center justify-center rounded-md border bg-background text-muted-foreground">
+                      <Icon className="size-4" />
+                    </div>
+                    <h3 className="text-sm font-semibold">{group.title}</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skill) => (
+                      <Badge key={skill} variant="secondary">
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </Reveal>
 
@@ -174,44 +188,7 @@ export function PortfolioHome({ contributions }: { contributions: ContributionDa
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {projects.map((project) => (
-              <Card key={project.title} className="overflow-hidden bg-card/75 shadow-none">
-                <ProjectVisual project={project} />
-                <CardHeader className="p-4">
-                  <Badge variant={badgeVariantByAccent[project.accent]} className="mb-2 w-fit">
-                    {project.subtitle}
-                  </Badge>
-                  <CardTitle className="font-sans text-base font-semibold">{project.title}</CardTitle>
-                  <CardDescription className="mt-2 leading-6">{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="p-4 pt-0">
-                  <p className="text-sm leading-7 text-muted-foreground">{project.impact}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.stack.map((item) => (
-                      <Badge key={item} variant="outline">
-                        {item}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.links.map((link) => {
-                      const Icon = link.icon;
-
-                      return (
-                        <Button key={link.label} asChild variant="outline" size="sm">
-                          <a href={link.href} target="_blank" rel="noreferrer">
-                            {Icon ? <Icon /> : null}
-                            {link.label}
-                          </a>
-                        </Button>
-                      );
-                    })}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <ExpandableProjects projects={projects} />
         </Reveal>
 
         <Reveal className="pt-12">
@@ -243,6 +220,16 @@ export function PortfolioHome({ contributions }: { contributions: ContributionDa
               <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-neutral-600 dark:text-neutral-400 sm:text-base">
                 Want to chat about full-stack, AI, or React Native work? Send a direct message with context and I will respond when I can.
               </p>
+
+              <div className="mt-6">
+                <span className="inline-flex items-center gap-2 rounded-full border border-green-500/25 bg-green-500/10 px-3 py-1 text-sm font-medium text-green-600 dark:text-green-400">
+                  <span className="relative flex size-2.5">
+                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-500 opacity-75" />
+                    <span className="relative inline-flex size-2.5 rounded-full bg-green-500" />
+                  </span>
+                  Open to opportunities
+                </span>
+              </div>
 
               <div className="mt-7 flex flex-wrap justify-center gap-3">
                 {contactLinks.map((link) => {

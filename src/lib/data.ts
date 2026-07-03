@@ -7,14 +7,14 @@ import {
 import type { LucideIcon } from "lucide-react";
 import {
   Bot,
+  Cloud,
   Code2,
   Database,
+  Globe,
   GraduationCap,
   Mail,
-  Rocket,
-  Server,
   ShieldCheck,
-  Smartphone,
+  Sparkles,
   TerminalSquare
 } from "lucide-react";
 
@@ -77,7 +77,7 @@ export const contactLinks: ContactLink[] = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/aditya-chaudhari-ai",
+    href: "https://www.linkedin.com/in/aditya-chaudhari-ai/",
     icon: IconBrandLinkedin
   },
   {
@@ -87,7 +87,7 @@ export const contactLinks: ContactLink[] = [
   },
   {
     label: "X",
-    href: "https://x.com/AdityaChaudhari901",
+    href: "https://x.com/AdityaXCodess",
     icon: IconBrandX
   }
 ];
@@ -229,34 +229,42 @@ export const projects: Project[] = [
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: "Frontend and Mobile",
-    icon: Smartphone,
-    skills: ["React.js", "Next.js", "React Native", "TypeScript", "Interactive UI", "Jest"]
-  },
-  {
-    title: "Backend and APIs",
-    icon: Server,
-    skills: ["FastAPI", "Flask", "Node.js", "REST API Design", "Microservices", "WebSockets"]
-  },
-  {
-    title: "Data and Storage",
-    icon: Database,
-    skills: ["PostgreSQL", "MySQL", "MongoDB", "Prisma", "FAISS", "Chroma", "Pinecone"]
-  },
-  {
-    title: "AI and LLM Systems",
-    icon: Bot,
-    skills: ["GPT-4o", "Gemini", "Claude", "RAG", "LangChain", "LangGraph", "Embeddings"]
-  },
-  {
-    title: "DevOps and Practice",
-    icon: Rocket,
-    skills: ["Docker", "nginx", "CI/CD", "GitHub", "Serverless", "Code Reviews", "Debugging"]
-  },
-  {
-    title: "Fundamentals",
+    title: "Programming Languages",
     icon: Code2,
-    skills: ["Python", "TypeScript", "JavaScript", "SQL", "OOP", "DSA", "Problem Solving"]
+    skills: ["Python", "JavaScript","Typescript"]
+  },
+  {
+    title: "AI/ML Technologies",
+    icon: Bot,
+    skills: [
+      "LangGraph",
+      "LangChain",
+      "RAG Architecture",
+      "Prompt Engineering",
+      "AI Agents",
+      "Multi-Agent Systems",
+      "MCP"
+    ]
+  },
+  {
+    title: "Web Development",
+    icon: Globe,
+    skills: ["React.js", "React Native", "Next.js", "Node.js", "FastAPI","Tailwind CSS","Shadcn UI"]
+  },
+  {
+    title: "Databases",
+    icon: Database,
+    skills: ["PostgreSQL", "MySQL", "MongoDB", "Prisma", "ChromaDB","NeonDB"]
+  },
+  {
+    title: "DevOps & Cloud",
+    icon: Cloud,
+    skills: ["Azure", "Docker", "Git", "GitHub", "CI/CD", "nginx", "Serverless"]
+  },
+  {
+    title: "Soft Skills",
+    icon: Sparkles,
+    skills: ["Problem Solving", "Collaboration", "Fast Learning"]
   }
 ];
 
