@@ -75,9 +75,6 @@ export function PortfolioHome({ contributions }: { contributions: ContributionDa
                 {profile.role} building AI agents, React Native chat SDKs, RAG systems, and production web applications.
               </p>
             </div>
-            <div className="hidden size-24 shrink-0 items-center justify-center rounded-lg border bg-card font-serif text-3xl font-semibold shadow-sm sm:flex">
-              AC
-            </div>
           </div>
 
           <div className="mt-6 flex flex-wrap gap-2">
