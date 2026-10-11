@@ -62,6 +62,7 @@ export const profile = {
   specialty: "AI agents, React Native, and production web systems",
   location: "Pune, India",
   email: "AdityaChaudhari9022@gmail.com",
+  emailHref: "https://mail.google.com/mail/?view=cm&fs=1&to=AdityaChaudhari9022@gmail.com",
   resumeHref: "/Aditya_Chaudhari_Resume.pdf",
   summary:
     "Full-stack software engineer with 1.5+ years shipping web and React Native applications end-to-end. I build React, Next.js, FastAPI, Node.js, and LLM-powered systems with strong product ownership from requirements through deployment.",
@@ -72,7 +73,7 @@ export const profile = {
 export const contactLinks: ContactLink[] = [
   {
     label: "Email",
-    href: "mailto:AdityaChaudhari9022@gmail.com",
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=AdityaChaudhari9022@gmail.com",
     icon: Mail
   },
   {
@@ -93,6 +94,15 @@ export const contactLinks: ContactLink[] = [
 ];
 
 export const experiences: Experience[] = [
+  {
+    company: "Zensar Technologies",
+    role: "Software Engineer",
+    location: "Pune, India",
+    period: "August - Present",
+    summary: "Working as a Software Engineer with LangChain, LangGraph, Python, MongoDB, and SQL.",
+    bullets: [],
+    tags: ["LangChain", "LangGraph", "Python", "MongoDB", "SQL"]
+  },
   {
     company: "Fynd (Shopsense Retail Technologies)",
     role: "Software Development Engineer Intern",

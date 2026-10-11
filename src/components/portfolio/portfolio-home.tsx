@@ -101,7 +101,14 @@ export function PortfolioHome({ contributions }: { contributions: ContributionDa
               <MapPin className="size-4" />
               {profile.location}
             </span>
-            <span className="hidden sm:inline">{profile.email}</span>
+            <a
+              href={profile.emailHref}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden sm:inline transition-colors hover:text-foreground"
+            >
+              {profile.email}
+            </a>
           </div>
         </section>
 
